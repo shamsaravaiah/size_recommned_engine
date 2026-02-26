@@ -6,6 +6,7 @@ import mediapipe as mp
 import torch
 from flask import Flask, request, jsonify
 import torch.nn.functional as F
+import os
 
 
 app = Flask(__name__)
@@ -456,5 +457,7 @@ def upload_images():
         "debug_info": debug_info
     })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8001)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", "8001"))
+    app.run(host="0.0.0.0", port=port)
